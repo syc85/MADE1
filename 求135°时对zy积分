@@ -1,0 +1,21 @@
+%迭代b  截距 34915
+b=0.095450;
+format long;
+A=3.9;
+B=20;
+H=0.13;
+tan=-1;
+funy=@(y,z) 2.*y.*sqrt((H-B.*y.^2)./A);
+qy=integral2(funy,b-H,(tan+sqrt(tan.^2+4*B.*b))/(2*B),@(y)tan*y+b,H);
+funz=@(y,z) 2.*z.*sqrt((H-B.*y.^2)./A);
+qz=integral2(funz,b-H,(tan+sqrt(tan.^2+4*B.*b))/(2*B),@(y)tan*y+b,H);
+fun1y=@(z,y) 2*y.*sqrt((H-B.*y.^2)/A);
+wy=integral2(fun1y,tan*(tan+sqrt(tan.^2+4*B.*b))/(2*B)+b,H,(tan+sqrt(tan.^2+4*B.*b))/(2*B),@(z)sqrt(z./B));
+fun1z=@(z,y) 2*z.*sqrt((H-B.*y.^2)/A);
+wz=integral2(fun1z,tan*(tan+sqrt(tan.^2+4*B.*b))/(2*B)+b,H,(tan+sqrt(tan.^2+4*B.*b))/(2*B),@(z)sqrt(z./B));
+sy=qy+wy
+sz=qz+wz
+%vpa(sy)
+%vpa(sz)
+%yy=sy/0.001266
+zz=sz/0.001266
