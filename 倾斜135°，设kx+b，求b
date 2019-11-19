@@ -1,0 +1,23 @@
+%迭代b  截距
+b=0.095;
+format long;
+A=3.9;
+B=20;
+H=0.13;
+tan=-1;
+while(b<5)
+b=b+0.0000001
+fun=@(y,z) 2.*sqrt((H-B.*y.^2)./A);
+q=integral2(fun,b-H,(tan+sqrt((tan.^2)+4.*B.*b))/(2.*B),@(y)tan.*y+b,H);
+
+fun1=@(z,y) 2*sqrt((H-B.*y.^2)/A);
+w=integral2(fun1,tan.*(tan+sqrt((tan.^2)+4.*B.*b))/(2.*B)+b,H,(tan+sqrt((tan.^2)+4*B.*b))/(2*B),@(z)sqrt(z./B));
+s=q+w
+%q=q*10;
+v=0.001285;
+%v=v*10;
+if s-v<=0.0000001
+    break
+end
+end
+b
