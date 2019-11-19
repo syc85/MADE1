@@ -1,0 +1,15 @@
+%水平吃水线
+H=0.080658300000096;
+format long;
+A=3.9;
+B=20;
+while(H<0.15)
+H=H+0.0000001
+fun=@(x,y) H-A.*x.^2-B.*y.^2;
+q=integral2(fun,-sqrt(H/A),sqrt(H/A),@(x)-sqrt((H-A.*x.^2)/B),@(x)sqrt((H-A.*x.^2)/B))
+v=0.001216;
+if v-q<=0.000001
+    break
+end
+end
+H
