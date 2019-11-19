@@ -1,0 +1,27 @@
+syms x y z b;
+A=3.9;
+B=20;
+H=0.0826518;
+%b=0.1564;
+%shu竖着积  V=0.004417864669111
+fun=@(x,z) 2*sqrt((z-A*x.^2)/B);
+q=integral2(fun,-sqrt(H/A),sqrt(H/A),@(x)A.*x.^2,H);
+%横着积
+%fun=@(x,y) H-A.*(x.^2)-B.*(y.^2);
+%q=integral2(fun,-sqrt(H/A),sqrt(H/A),@(x)-sqrt((H-A.*x.^2)/B),@(x)sqrt((H-A.*x.^2)/B));
+%ceshi
+%fun=@(y,x) 1-x-y;
+%q=integral2(fun,-1,1,@(x)-sqrt(1-x.^2),@(x)sqrt(1-x.^2))
+%V排=1300    0.0013
+%小船重心z乘体积  0.00044178646690095897762301513367333
+%fun=@(x,z) 2.*z.*sqrt((z-A*x.^2)/B);
+%q=integral2(fun,-sqrt(H/A),sqrt(H/A),@(x)A.*x.^2,H);
+%横着积小船重心z乘机 0.00044178646690095897762301513367333
+%fun=@(x,y) (1/2)*(H.^2-(A.*x.^2+B.*y.^2).^2);
+%g=integral2(fun,-sqrt(H/A),sqrt(H/A),@(x)-sqrt((H-A.*x.^2)/B),@(x)sqrt((H-A.*x.^2)/B));
+%水面以下体积乘z
+fun1=@(x,z) 2.*z.*sqrt((z-A*x.^2)/B);
+i=integral2(fun1,-sqrt(H/A),sqrt(H/A),@(x)A.*x.^2,H)
+%m=2000;
+%kc=i/q
+%zx=(kc*200+32.859999999+m*0.04)/(200+m+106)
