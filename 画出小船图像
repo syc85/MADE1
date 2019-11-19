@@ -1,0 +1,15 @@
+t=-0.3:0.01:0.3;
+A=3.9;
+B=20;
+[x,y] =meshgrid(t);%%表示区域网格控制，目地是为了让x,y形成格点矩阵%%
+
+z=A*x.^2+B*y.^2;
+z<0.2;
+surf(x,y,z);
+%%设置三维曲面x轴，y轴，z轴，标题对应内容及三个坐标轴的取值范围%%
+xlabel('x');
+ylabel('y');
+zlabel('Z');
+title('The primary form of the ship');
+
+axis([-0.3 0.3 -0.3 0.3 -0.3 0.3 ]);
